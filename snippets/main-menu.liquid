@@ -1,0 +1,22 @@
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="/">{{ store.display_name }}</a>
+        </li>
+    {% for link in page.main-menu %}
+        <li class="{% if link.active %} active {% endif %}">
+            
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {% if link.links != blank %}
+            <ul class="main-menu__sub">
+                {% for sublink in link.links %}
+                <li>
+                    <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+</nav>

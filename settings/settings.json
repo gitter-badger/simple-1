@@ -1,0 +1,112 @@
+[{ 
+    "Name": "Example_Text", 
+    "Label": "Text", 
+    "LabelHelp": "Example label help", 
+    "Type": "text", 
+    "Value": "Hello world",
+    "Placeholder": "Placeholder me up",
+    "InputHelp": "Example input help"
+}, 
+{ 
+    "Name": "Example_Select", 
+    "Label": "Steves Select", 
+    "LabelHelp": "Example label help", 
+    "Type": "select", 
+    "Options": [{
+                    "Label": "Option 1",
+                    "Value": 1,
+                    "Selected": true
+                },
+                {
+                    "Label": "Option 2",
+                    "Value": 2
+                },
+                {
+                    "Label": "Option 3",
+                    "Value": 3
+                }],
+    "InputHelp": "Example input help"
+},
+{ 
+    "Name": "Example_Select", 
+    "Label": "Select", 
+    "LabelHelp": "Example label help", 
+    "Type": "select", 
+    "Options": [{
+                    "Label": "Option 1",
+                    "Value": 1
+                },
+                {
+                    "Label": "Option 2",
+                    "Value": 2,
+                    "Selected": true
+                },
+                {
+                    "Label": "Option 3",
+                    "Value": 3
+                }],
+    "InputHelp": "Example input help"
+},
+{ 
+    "Name": "Example_Color", 
+    "Label": "Color", 
+    "LabelHelp": "Example label help", 
+    "Type": "color", 
+    "Value": "#D55E5E",
+    "Placeholder": "#D55E5E",
+    "InputHelp": "Example input help"
+},
+{ 
+    "Name": "Example_Upload", 
+    "Label": "Upload", 
+    "LabelHelp": "Example label help", 
+    "Type": "upload", 
+    "ButtonText": "Choose file",
+    "InputHelp": "Example input help"
+},
+{ 
+    "Name": "Example_Radios", 
+    "Label": "Radios", 
+    "LabelHelp": "Example label help", 
+    "Type": "radio", 
+    "Options": [{
+                    "Label": "Option 1",
+                    "Id": "Example_Radios_Option_1",
+                    "Value": 1
+                },
+                {
+                    "Label": "Option 2",
+                    "Id": "Example_Radios_Option_2",
+                    "Value": 2,
+                    "Checked": true
+                },
+                {
+                    "Label": "Option 3",
+                    "Id": "Example_Radios_Option_3",
+                    "Value": 3
+                }],
+    "InputHelp": "Example input help"
+},
+{ 
+    "Name": "Example_Checkboxes", 
+    "Label": "Checkboxes", 
+    "LabelHelp": "Example label help", 
+    "Type": "checkbox", 
+    "Options": [{
+                    "Label": "Option 1",
+                    "Id": "Example_Checkboxes_Option_1",
+                    "Value": 1
+                },
+                {
+                    "Label": "Option 2",
+                    "Id": "Example_Checkboxes_Option_2",
+                    "Value": 2,
+                    "Checked": true
+                },
+                {
+                    "Label": "Option 3",
+                    "Id": "Example_Checkboxes_Option_3",
+                    "Value": 3
+                }],
+    "InputHelp": "Example input help"
+}]

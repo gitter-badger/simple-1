@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>{{ store.display_name }}</title>
+        {{ content_for_header }}
+    </head>
+    <body>
+        {% include nav-bar.liquid %}
+        {% block contents %}{% endblock %}
+        {{ content_for_footer }}
+    </body>
+</html>

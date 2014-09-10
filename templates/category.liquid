@@ -1,0 +1,29 @@
+{% extends theme.liquid %}
+{% block contents %}
+<h1>{{ category.title }}</h1>
+{%paginate category.items by 2%}
+    <ul>
+        {% for item in category.items -%}
+            <li>
+                <h3><a href="/item/{{ item.id }}">{{ item.title }}</a></h3>
+                {{ item.image_url_small | img_tag }}
+                <p>Published:  {{ item.created_time | date: 'MMMM dd, yyyy' }}</p>
+            </li>                  
+        {% endfor -%}
+    </ul>
+
+    {% if paginate.previous.is_link %}
+        <a href="{{ paginate.previous.url }}">Previous</a><br>
+    {% endif %}
+    {% if paginate.next.is_link %}
+        <a href="{{ paginate.next.url }}">Next</a><br>
+    {% endif %}
+   
+    Size : {{paginate.size}} <br>
+    Current page : {{paginate.current_page}} <br>
+    Can Previous {{paginate.previous}}  <br>
+    Can Next {{paginate.next}}  <br>
+    Page Size : {{paginate.page_size}} <br>
+{%endpaginate%}
+
+{% endblock %}

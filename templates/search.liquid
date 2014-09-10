@@ -1,0 +1,21 @@
+{% extends theme.liquid %}
+{% block contents %}
+<h1>Search Results - {{ search.keyword }}</h1>
+{% paginate search.results by 2 %}
+    <ul>
+        {% for item in search.results -%}
+            <li>
+                <h3><a href="/item/{{ item.id }}">{{ item.title }}</a></h3>
+                {{ item.image_url_small | img_tag }}
+                <p>Published:  {{ item.created_time | date: 'MMMM dd, yyyy' }}</p>
+            </li>                  
+        {% endfor -%}
+    </ul>
+    {% if paginate.previous.is_link %}
+        <a href="{{ paginate.previous.url }}">Previous</a><br>
+    {% endif %}
+    {% if paginate.next.is_link %}
+        <a href="{{ paginate.next.url }}">Next</a><br>
+    {% endif %}
+{% endpaginate %}
+{% endblock %}

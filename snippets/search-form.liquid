@@ -1,0 +1,12 @@
+<div class="search">
+    <form action="/search" method="GET" class="form-search">
+        <fieldset>
+            <legend class="visually-hidden">Search</legend>
+            <div class="search-control">
+                <label for="Keyword" class="visually-hidden">Keyword</label>
+                <input type="search" name="keyword" id="Keyword" class="form-control search-query" placeholder="Search" value="{{ search.keyword }}">
+            </div>
+            <button type="submit" class="btn-search"><span>Search</span></button>
+        </fieldset>
+    </form>
+</div>
