@@ -1,0 +1,12 @@
+{% if paginate.pages > 1 %}
+    <p class="sr-only" id="pagination-label">Pagination</p>
+    <div class="pagination row" role="navigation" aira-labelledby="pagination-label">
+        <p class="sr-only">You're currently on page {{ paginate.current_page }} of {{ paginate.pages }}</p>
+        {% if paginate.next.is_link %}
+            <a href="{{ paginate.next.url }}" class="btn btn-primary btn-empty btn-rounded next" rel="next">{{ paginate.next.title }}</a>
+        {% endif %}
+        {% if paginate.previous.is_link %}
+            <a href="{{ paginate.previous.url }}" class="btn btn-rounded btn-empty previous" rel="prev">{{ paginate.previous.title }}</a>
+        {% endif %}
+    </div>
+{% endif %}

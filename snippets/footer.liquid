@@ -1,0 +1,16 @@
+<footer class="footer">
+    <div class="container">
+        <nav class="menu menu-footer">
+            <ul>
+                <li class="store-name">&copy; {{ "%Y" | date_now }} <a href="{{ store.url }}">{{ store.display_name }}</a></li>
+                {% for link in links.footer-menu %}
+                    <li class="{% if link.is_active %} active {% endif %}">
+                        <a href="{{ link.url }}"{% if link.target %} target="{{ link.target }}"{% endif %}>{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        
+        {% include social-links.liquid %}
+    </div>
+</footer>

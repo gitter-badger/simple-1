@@ -1,0 +1,46 @@
+// Tiles
+.tiles {
+    list-style: none;
+    margin: 0 0 @grid-section-padding;
+    padding: 0;
+    font-size: 0; // White space reset
+    
+    @media (min-width : @screen-xs) {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+}
+.tile {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    .font-size(@font-size-base);
+    
+    a {
+        display: block;
+        position: relative;
+    }
+    .item-info {
+        padding: @grid-section-padding 0;
+        text-align: center;
+        
+        h4 {
+            margin: 0;
+        }
+        p {
+            margin: @grid-section-padding / 2 0 0;
+            color: @headings-small-color;
+        }
+    }
+    
+    @media (min-width : @screen-xs) {
+        width: 50%;
+        padding: 0 @grid-section-padding / 2;
+    }
+    @media (min-width : @screen-sm) {
+        width: 33%;
+    }
+    @media (min-width : @screen-md) {
+        width: 25%;
+    }
+}

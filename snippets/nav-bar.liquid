@@ -1,10 +1,14 @@
-<div class="nav-bar">
+<div class="nav-bar {% if store.apps.cart == false or page.template == "checkout" %}nav-bar-no-cart{% endif %}">
     <div class="container">
-        <div class="ninecol">
-            {% include main-menu.liquid %}
-        </div>
-        <div class="threecol">
-            {% include search-form.liquid %}
+        {% if settings.logo_display == "image" and store.logo %}
+            <a class="store-name" href="{{ store.url }}">{{ store.logo | img_tag:store.display_name }}</a>
+        {% else %}
+            <a class="store-name" href="{{ store.url }}">{{ store.display_name }}</a>
+        {% endif %}
+        <div class="nav-bar-actions">
+            {{ mini_cart }}
+            <button type="button" class="btn-faux-link btn-toggle-main-menu icon-list" data-toggle="class" data-target="html" data-class="main-menu-active">Menu</button>
         </div>
     </div>
+    {% include main-menu.liquid %}
 </div>

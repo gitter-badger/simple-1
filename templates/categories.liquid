@@ -1,15 +1,36 @@
 {% extends theme.liquid %}
 {% block contents %}
-
-<h1>Categories</h1>        
-<ul>
-    {% for category in categories.all -%}
-        <li>
-            <h3><a href="/categories/{{ category.slug}}">{{ category.title }}</a></h3>
-            {{ category.image_url_small | img_tag }}
-            <p>Description</p>
-        </li>
-    {% endfor -%}
-</ul>
-     
+    <main class="container" id="main" role="main">
+        <header class="header-small">
+            {% if page.title %}
+                <h1>{{ page.title }}</h1>
+            {% else %}
+                <h1>Categories</h1>
+            {% endif %}
+            {% if page.description %}
+                <p>{{ page.description }}</p>
+            {% else %}
+                <p>All categories</p>
+            {% endif %}
+        </header>
+        <ul class="tiles">
+            {% for category in categories -%}
+                <li class="tile">
+                    <a href="{{ category.url }}">
+                        <div class="media item-media">
+                            {% if category.image_url_small %} 
+                                {{ category.image_url_small | img_tag:item.title }}
+                            {% else %}
+                                {{ "https://d33i624pw6jj68.cloudfront.net/themes/simple/assets/images/default_category_image.svg" | img_tag:page.title }}
+                            {% endif %}
+                        </div>
+                        <div class="item-info">
+                            <h4>{{ category.title }}</h4>
+                            <p>{{ category.total_items }} items</p>
+                        </div>
+                    </a>
+                </li>
+            {% endfor -%}
+        </ul>
+    </main>
 {% endblock %}

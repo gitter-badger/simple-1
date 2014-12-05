@@ -1,0 +1,218 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+
+// Base Colors
+@red:                                       #e74c3c;
+@green:                                     #1ac266;
+@blue:                                      #3498db;
+@purple:                                    #9b59b6;
+@orange:                                    #e67e22;
+@yellow:                                    #f1c40f;
+@dark-blue:									#34495e;
+@turquoise:									#1abc9c;
+
+// Tints (darker)
+@tint-red:									#c0392b;
+@tint-green:                                #18b55f;
+@tint-blue: 		                        #2980b9;
+@tint-purple:								#8e44ad;
+@tint-orange:								#d35400;
+@tint-yellow: 								#f39c12;
+@tint-dark-blue:							#2c3e50;
+@tint-turquoise:							#16a085;
+
+// Greyscale
+@black:										darken(#7f8c8d, 20%);
+@gray-dark:							        #7f8c8d;
+@gray:			                            #95a5a6;
+@gray-light:					        	#bdc3c7;
+@gray-lighter:					        	mix(@gray-light, @gray-lightest, 30%);
+@gray-lightest:								#ecf0f1;
+@off-white:						        	#fbfbfb;
+
+// Brands
+@color-facebook:				        	#3c569a;
+@color-twitter:					            #0f94ff; 
+@color-google-plus:			        	    #de4c35; 
+@color-instagram:				            #925e47;
+@color-pinterest:				            #cb2026; 
+@color-tumblr:                              #3D5A70;
+@color-youtube:                             #CC181E;
+@color-kindle:                              #dc820e;
+@color-dropbox:                             #137de0;
+@color-dribbble:                            #EA4C89;
+@color-vimeo:                               #19b7ed;
+@color-paypal: 							    #0D79BF;
+@color-flickr: 							    #FD1E81;
+@color-soundcloud:                          #FF4D00;
+
+// Branding
+// --------------------------------------------------
+@brand-primary:                             {{ settings.color_primary }};
+@brand-secondary:                           {{ settings.color_secondary }};
+
+// Base
+// --------------------------------------------------
+@body-background:                           #fff;
+@text-color:                                {{ settings.color_text }};
+@link-color:                                @brand-primary;
+@link-hover-color:                          @black;
+
+// Typography
+// --------------------------------------------------
+// Font, line-height, and color for body text, headings, and more.
+@font-family-sans-serif:                    Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:                         Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:                     Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:                          @font-family-sans-serif;
+
+@font-size-base:                            16;
+@font-size-large:                           ceil((@font-size-base * 1.1)); // ~18px
+@font-size-small:                           ceil((@font-size-base * 0.8)); // ~13px
+@font-size-xs:                              floor((@font-size-base * 0.7)); // ~11px
+
+@font-size-h1:                              ceil((@font-size-base * 2.25)); // ~36px
+@font-size-h2:                              ceil((@font-size-base * 1.85)); // ~30px
+@font-size-h3:                              ceil((@font-size-base * 1.5)); // ~24px
+@font-size-h4:                              ceil((@font-size-base * 1.1)); // ~18px
+@font-size-h5:                              @font-size-base;
+@font-size-h6:                              ceil((@font-size-base * 0.8)); // ~13px
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:                          1.5;
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:                      floor((@font-size-base * @line-height-base)) * 1px; // ~25px
+
+//** By default, this inherits from the `body`.
+@headings-font-family:                      inherit;
+@headings-font-weight:                      600;
+@headings-line-height:                      1.1;
+@headings-color:                            @brand-secondary;
+@headings-small-color:                      lighten(@text-color, 20%);
+
+// Components
+// --------------------------------------------------
+// Define common padding and border radius sizes and more. Values based on 15px text and 1.5 line-height (~20px to start).
+@padding-base-vertical:                     8px;
+@padding-base-horizontal:                   12px;
+
+@padding-large-vertical:                    10px;
+@padding-large-horizontal:                  15px;
+
+@padding-small-vertical:                    5px;
+@padding-small-horizontal:                  8px;
+
+@padding-xs-vertical:                       1px;
+@padding-xs-horizontal:                     5px;
+
+@line-height-large:                         1.33;
+@line-height-small:                         1.5;
+
+@border-radius-base:                        4px;
+@border-radius-large:                       6px;
+@border-radius-small:                       3px;
+
+// Menu 
+// --------------------------------------------------
+@off-canvas-menu-bg:                        {{ settings.color_off_canvas_nav }};
+
+// Logos
+// --------------------------------------------------
+@logo-selz:                                 url("//d33i624pw6jj68.cloudfront.net/themes/simple/static/images/selz.svg");
+@logo-visa:                                 url("//d33i624pw6jj68.cloudfront.net/themes/simple/static/images/visa.svg");
+@logo-mastercard:                           url("//d33i624pw6jj68.cloudfront.net/themes/simple/static/images/mastercard.svg");
+@logo-amex:                                 url("//d33i624pw6jj68.cloudfront.net/themes/simple/static/images/amex.svg");
+@logo-paypal:                               url("//d33i624pw6jj68.cloudfront.net/themes/simple/static/images/paypal.svg");
+@logo-paypal-white:                         url("//d33i624pw6jj68.cloudfront.net/themes/simple/static/images/paypal_white.svg");
+
+// Tables
+// --------------------------------------------------
+// Customizes the `.table` component with basic values, each used across all table variations.
+@table-cell-padding:                        20px;
+@table-condensed-cell-padding:              10px;
+@table-bg:                                  transparent;
+@table-bg-hover:                            #f5f5f5;
+@table-bg-active:                           @table-bg-hover;
+@table-border-color:                        @gray-lightest;
+
+// Buttons
+// --------------------------------------------------
+@btn-font-weight:                           600;
+@btn-radius:                                @border-radius-base;
+@btn-default-bg:                            @text-color;
+@btn-primary-bg:                            @brand-primary;
+@btn-success-bg:                            @green;
+@btn-danger-bg:                             @red;
+@btn-link-disabled-color:                   @gray-light;
+
+// Tooltips
+// --------------------------------------------------
+@tooltip-bg:                                @black;
+@tooltip-text-color:                        #fff;
+@tooltip-zindex:                            30;
+
+// Forms
+// --------------------------------------------------
+@input-bg:                                  #fff;
+@input-bg-disabled:                         @gray-lighter;
+@input-color:                               @gray;
+@input-border:                              @gray-lighter;
+@input-border-width:                        2px;
+@input-border-radius:                       @border-radius-base;
+@input-border-focus:                        @brand-primary;
+@input-color-placeholder:                   @gray-light;
+
+// Input heights
+@input-height-base:                         (@line-height-computed + (@padding-base-vertical * 2) + 2) * 1px;
+@input-height-large:                        (ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2) * 1px;
+@input-height-small:                        (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2) * 1px;
+
+// Input group addons
+@input-group-addon-bg:                      @gray-lightest;
+@input-group-addon-border-color:            @input-border;
+
+// Form states and alerts
+// --------------------------------------------------
+// Define colors for form feedback states and, by default, alerts.
+
+@state-success-text:                        @tint-green;
+@state-success-bg:                          lighten(@tint-green, 52%);
+@state-success-border:                      darken(spin(@state-success-bg, -10), 7%);
+
+@state-info-text:                           @tint-blue;
+@state-info-bg:                             lighten(@tint-blue, 48%);
+@state-info-border:                         darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:                        @tint-yellow;
+@state-warning-bg:                          lighten(@tint-yellow, 44%);
+@state-warning-border:                      darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:                         @tint-red;
+@state-danger-bg:                           lighten(@tint-red, 48%);
+@state-danger-border:                       darken(spin(@state-danger-bg, -10), 5%);
+
+@main-menu-width:                           280px;
+
+// Media queries breakpoints
+// --------------------------------------------------
+// Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+@screen-xs:                                 480px;
+// Small screen / tablet
+@screen-sm:                                 768px;
+// Medium screen / desktop
+@screen-md:                                 992px;
+// Large screen / wide desktop
+@screen-lg:                                 1200px;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:                             (@screen-sm - 1);
+@screen-sm-max:                             (@screen-md - 1);
+@screen-md-max:                             (@screen-lg - 1);
+
+// Grid
+@grid-min-width:                            270px;
+@grid-gutter-width:                         30px;
+@grid-section-padding:                      20px;

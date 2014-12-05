@@ -1,28 +1,39 @@
 {% extends theme.liquid %}
 {% block contents %}
-    <header class="header">
-        <div class="container">
-            <h1>{{ page.title }}</h1>
-            <p>{{ page.meta_description }}</p>
-        </div>
+    <header class="header container">
+        {% editable_region header %}
+            <h1>{{ store.name }}</h1>
+            {% if page.meta_description %}
+                <p>{{ page.meta_description }}</p>
+            {% endif %}
+        {% endeditable_region %}
     </header>
-    
-    <main class="container">
-        <ul class="product--tiles row">
-            {% for item in categories.featured.items -%}
-                <li class="product--tile threecol">
-                    <a href="/item/{{ item.id }}">
-                        <div class="product__media" style="background-image: url({{ item.image_url_small }})">
-                            <!--{{ item.image_url_large | img_tag }}-->
-                        </div>
-                        <div class="product__info">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.display_price }}</p>
-                            <small>Added {{ item.created_time | date: 'MMMM dd, yyyy' }}</small>
-                        </div>
-                    </a>
-                </li>
-            {% endfor -%}
-        </ul>
+    <main class="container" id="main" role="main">
+        {% paginate categories.featured.items by settings.index_page_size %}
+            {% if categories.featured.items == empty %}
+                <p class="empty-block">The featured category is empty. Add some items to this category in your dashboard.</p>
+            {% else %}
+                <ul class="tiles">
+                    {% for item in categories.featured.items -%}
+                        <li class="tile">
+                            <a href="{{ item.url }}">
+                                <div class="media item-media">
+                                    {% if item.featured_image.url_medium %} 
+                                        {{ item.featured_image.url_medium | img_tag:item.title }}
+                                    {% else %}
+                                        {{ "https://d33i624pw6jj68.cloudfront.net/themes/simple/assets/images/default_item_image.svg" | img_tag:item.title }}
+                                    {% endif %}
+                                </div>
+                                <div class="item-info">
+                                    <h4>{{ item.title }}</h4>
+                                    <p>{{ item.price | money: item.currency }}</p>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor -%}
+                </ul>
+                {% include pagination.liquid %}
+            {% endif %}
+        {% endpaginate %}
     </main>
 {% endblock %}

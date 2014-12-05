@@ -1,0 +1,54 @@
+{% extends theme.liquid %}
+{% block contents %}
+    <main class="container" id="main" role="main">
+        <header class="header-small">
+            <h1>{{ page.title }}</h1>
+            {% if page.meta_description %}
+                <p>{{ page.meta_description }}</p>
+            {% endif %}
+        </header>
+        {% editable_region contact %}
+        {% endeditable_region %}
+        {% form 'contact' %}
+            {% if form.errors %}
+                <p class="alert alert-error" role="alert">Whoops, it looks like there were some errors.</p>
+            {% endif %}
+            {% if form.posted_successfully %}
+                <p class="alert alert-success" role="alert">Your message was sent!</p>
+            {% endif %}
+            <fieldset>
+                <legend class="sr-only">Contact</legend>
+                <div class="row">
+                    <div class="span6 control-group">
+                        <div class="input-group input-group-flex">
+                            <label for="contact_name" class="add-on">Name</label>
+                            <input type="text" id="contact_name" name="contact[name]" placeholder="Name" value="{{ form.name }}">
+                        </div>
+                        {% if form.errors.messages['contact_name'] %}
+                            <div class="validation-error" role="alert">{{ form.errors.messages['contact_name'] }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="span6 control-group">
+                        <div class="input-group input-group-flex">
+                            <label for="contact_email" class="add-on">Email</label>
+                            <input type="email" id="contact_email" name="contact[email]" placeholder="Email" value="{{ form.email }}">
+                        </div>
+                        {% if form.errors.messages['contact_email'] %}
+                            <div class="validation-error" role="alert">{{ form.errors.messages['contact_email'] }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="contact_message" class="sr-only">Message</label>
+                    <textarea rows="10" id="contact_message" name="contact[message]" placeholder="Message">{{ form.message }}</textarea>
+                    {% if form.errors.messages['contact_message'] %}
+                        <div class="validation-error" role="alert">{{ form.errors.messages['contact_message'] }}</div>
+                    {% endif %}
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </fieldset>
+        {% endform %}
+    </main>
+{% endblock %}

@@ -1,12 +1,15 @@
-<div class="search">
-    <form action="/search" method="GET" class="form-search">
+<div class="form-search">
+    {% form 'search' %}
         <fieldset>
-            <legend class="visually-hidden">Search</legend>
+            <legend class="sr-only">Search</legend>
             <div class="search-control">
-                <label for="Keyword" class="visually-hidden">Keyword</label>
-                <input type="search" name="keyword" id="Keyword" class="form-control search-query" placeholder="Search" value="{{ search.keyword }}">
+                <label for="Keyword" class="sr-only">Keyword</label>
+                <input type="search" name="keyword" id="Keyword" class="search-query" placeholder="Search" value="{{ search.keyword }}">
+                <button type="submit" class="btn-faux-link btn-search">
+                    <span class="icon-search" aria-hidden="true"></span>
+                    <span class="sr-only">Search</span>
+                </button>
             </div>
-            <button type="submit" class="btn-search"><span>Search</span></button>
         </fieldset>
-    </form>
+    {% endform %}
 </div>

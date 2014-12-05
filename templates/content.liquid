@@ -1,11 +1,17 @@
 {% extends theme.liquid %}
 {% block contents %}
-
-<div class="container">
-    <h1>{{ page.title }}</h1>
-    {% editable_region about %}
-        Default text
-    {% endeditable_region %}
-</div>
-     
+    <main class="container" id="main" role="main">
+        {% if page.meta_description or page.title %}
+            <header class="header-small">
+                {% if page.title %}
+                    <h1>{{ page.title }}</h1>
+                {% endif %}
+                {% if page.meta_description %}
+                    <p>{{ page.meta_description }}</p>
+                {% endif %}
+            </header>
+        {% endif %}
+        {% editable_region body %}
+        {% endeditable_region %}
+    </main>
 {% endblock %}

@@ -1,29 +1,37 @@
 {% extends theme.liquid %}
 {% block contents %}
-<h1>{{ category.title }}</h1>
-{%paginate category.items by 2%}
-    <ul>
-        {% for item in category.items -%}
-            <li>
-                <h3><a href="/item/{{ item.id }}">{{ item.title }}</a></h3>
-                {{ item.image_url_small | img_tag }}
-                <p>Published:  {{ item.created_time | date: 'MMMM dd, yyyy' }}</p>
-            </li>                  
-        {% endfor -%}
-    </ul>
-
-    {% if paginate.previous.is_link %}
-        <a href="{{ paginate.previous.url }}">Previous</a><br>
-    {% endif %}
-    {% if paginate.next.is_link %}
-        <a href="{{ paginate.next.url }}">Next</a><br>
-    {% endif %}
-   
-    Size : {{paginate.size}} <br>
-    Current page : {{paginate.current_page}} <br>
-    Can Previous {{paginate.previous}}  <br>
-    Can Next {{paginate.next}}  <br>
-    Page Size : {{paginate.page_size}} <br>
-{%endpaginate%}
-
+    <main class="container" id="main" role="main">
+        <header class="header-small">
+            <h1>{{ category.title }}</h1>
+            {% if category.description %}
+                <p>{{ category.description }}</p>
+            {% endif %}
+        </header>
+        {% paginate category.items by settings.default_page_size %}
+            {% if category.items == empty %}
+                <p class="empty-block">This category has no items</p>
+            {% else %}
+                <ul class="tiles">
+                    {% for item in category.items -%}
+                        <li class="tile">
+                            <a href="{{ item.url }}">
+                                <div class="media item-media">
+                                    {% if item.featured_image.url_medium %} 
+                                        {{ item.featured_image.url_medium | img_tag:item.title }}
+                                    {% else %}
+                                        {{ "https://d33i624pw6jj68.cloudfront.net/themes/simple/assets/images/default_item_image.svg" | img_tag:item.title }}
+                                    {% endif %}
+                                </div>
+                                <div class="item-info">
+                                    <h4>{{ item.title }}</h4>
+                                    <p>{{ item.price | money: item.currency }}</p>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor -%}
+                </ul>
+                {% include pagination.liquid %}
+            {% endif %}
+        {% endpaginate %}
+    </main>
 {% endblock %}

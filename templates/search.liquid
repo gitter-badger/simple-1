@@ -1,21 +1,62 @@
 {% extends theme.liquid %}
 {% block contents %}
-<h1>Search Results - {{ search.keyword }}</h1>
-{% paginate search.results by 2 %}
-    <ul>
-        {% for item in search.results -%}
-            <li>
-                <h3><a href="/item/{{ item.id }}">{{ item.title }}</a></h3>
-                {{ item.image_url_small | img_tag }}
-                <p>Published:  {{ item.created_time | date: 'MMMM dd, yyyy' }}</p>
-            </li>                  
-        {% endfor -%}
-    </ul>
-    {% if paginate.previous.is_link %}
-        <a href="{{ paginate.previous.url }}">Previous</a><br>
+    {% if search.keyword == empty %}
+        <main class="container" id="main" role="main">
+            <header class="header-small row">
+                <div class="span8">
+                    {% if page.title %}
+                        <h1>{{ page.title }}</h1>
+                    {% else %}
+                        <h1>Search</h1>
+                    {% endif %}
+                    {% if page.description %}
+                        <p>{{ page.description }}</p>
+                    {% else %}
+                        <p>Search for items</p>
+                    {% endif %}
+                </div>
+                <div class="span4">
+                    {% include search-form.liquid %}
+                </div>
+            </header>
+        </main>
+    {% else %}
+        <main class="container" id="main">
+            <header class="header-small row">
+                <div class="span8">
+                    {% if page.title %}
+                        <h1>{{ page.title }}</h1>
+                    {% else %}
+                        <h1>Search</h1>
+                    {% endif %}
+                    <p>We found {{ search.results.size }} results for '<strong>{{ search.keyword }}</strong>'</p>
+                </div>
+                <div class="span4">
+                    {% include search-form.liquid %}
+                </div>
+            </header>
+            {% paginate search.results by settings.default_page_size %}
+                <ul class="tiles">
+                    {% for item in search.results -%}
+                        <li class="tile">
+                            <a href="{{ item.url }}">
+                                <div class="media item-media">
+                                    {% if item.featured_image.url_medium %} 
+                                        {{ item.featured_image.url_medium | img_tag:item.title }}
+                                    {% else %}
+                                        {{ "https://d33i624pw6jj68.cloudfront.net/themes/simple/assets/images/default_item_image.svg" | img_tag:item.title }}
+                                    {% endif %}
+                                </div>
+                                <div class="item-info">
+                                    <h4>{{ item.title }}</h4>
+                                    <p>{{ item.price | money: item.currency }}</p>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor -%}
+                </ul>
+                {% include pagination.liquid %}
+            {% endpaginate %}
+        </main>
     {% endif %}
-    {% if paginate.next.is_link %}
-        <a href="{{ paginate.next.url }}">Next</a><br>
-    {% endif %}
-{% endpaginate %}
 {% endblock %}

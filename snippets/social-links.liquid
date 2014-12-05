@@ -1,0 +1,37 @@
+{% if store.social_links != empty %}
+    <ul class="social-links">
+        {% if store.social_links.facebook %}
+            <li><a href="{{ store.social_links.facebook }}" target="_blank" class="icon-facebook color-hover-facebook tooltip"><span class="tip tip-above">Facebook</span></a></li>
+        {% endif %}
+        {% if store.social_links.twitter %}
+            <li><a href="{{ store.social_links.twitter }}" target="_blank" class="icon-twitter color-hover-twitter tooltip"><span class="tip tip-above">Twitter</span></a></li>
+        {% endif %}
+        {% if store.social_links.pinterest %}
+            <li><a href="{{ store.social_links.pinterest }}" target="_blank" class="icon-pinterest color-hover-pinterest tooltip"><span class="tip tip-above">Pinterest</span></a></li>
+        {% endif %}
+        {% if store.social_links.google_plus %}
+            <li><a href="{{ store.social_links.google_plus }}" target="_blank" class="icon-google-plus color-hover-google-plus tooltip"><span class="tip tip-above">Google+</span></a></li>
+        {% endif %}
+        {% if store.social_links.youtube %}
+            <li><a href="{{ store.social_links.youtube }}" target="_blank" class="icon-youtube color-hover-youtube tooltip"><span class="tip tip-above">YouTube</span></a></li>
+        {% endif %}
+        {% if store.social_links.vimeo %}
+            <li><a href="{{ store.social_links.vimeo }}" target="_blank" class="icon-vimeo color-hover-vimeo tooltip"><span class="tip tip-above">Vimeo</span></a></li>
+        {% endif %}
+        {% if store.social_links.dribbble %}
+            <li><a href="{{ store.social_links.dribbble }}" target="_blank" class="icon-dribbble color-hover-dribbble tooltip"><span class="tip tip-above">Dribbble</span></a></li>
+        {% endif %}
+        {% if store.social_links.instagram %}
+            <li><a href="{{ store.social_links.instagram }}" target="_blank" class="icon-instagram color-hover-instagram tooltip"><span class="tip tip-above">Instagram</span></a></li>
+        {% endif %}
+        {% if store.social_links.flickr %}
+            <li><a href="{{ store.social_links.flickr }}" target="_blank" class="icon-flickr color-hover-flickr tooltip"><span class="tip tip-above">Flickr</span></a></li>
+        {% endif %}
+        {% if store.social_links.tumblr %}
+            <li><a href="{{ store.social_links.tumblr }}" target="_blank" class="icon-tumblr color-hover-tumblr tooltip"><span class="tip tip-above">Tumblr</span></a></li>
+        {% endif %}
+        {% if store.social_links.soundcloud %}
+            <li><a href="{{ store.social_links.soundcloud }}" target="_blank" class="icon-soundcloud color-hover-soundcloud tooltip"><span class="tip tip-above">Soundcloud</span></a></li>
+        {% endif %}
+    </ul>
+{% endif %}

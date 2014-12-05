@@ -1,22 +1,24 @@
-<nav class="main-menu">
-    <ul>
-        <li>
-            <a href="/">{{ store.display_name }}</a>
-        </li>
-    {% for link in page.main-menu %}
-        <li class="{% if link.active %} active {% endif %}">
-            
-            <a href="{{ link.url }}">{{ link.title }}</a>
-            {% if link.links != blank %}
-            <ul class="main-menu__sub">
-                {% for sublink in link.links %}
-                <li>
-                    <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+<nav class="menu menu-main" role="navigation">
+    <div class="menu-main-wrap">
+        <button type="button" class="btn-faux-link btn-close-main-menu" data-toggle="class" data-target="html" data-class="main-menu-active">Close Menu</button>
+    
+        {% include search-form.liquid %}
+    
+        <ul>
+            {% for link in links.main-menu %}
+                <li class="{% if link.is_active %}active{% endif %}">
+                    <a href="{{ link.url }}"{% if link.target %} target="{{ link.target }}"{% endif %}>{{ link.title }}</a>
+                    {% if link.links != blank %}
+                    <ul class="menu-main-sub">
+                        {% for sublink in link.links %}
+                        <li class="{% if sublink.is_active %}active{% endif %}">
+                            <a href="{{ sublink.url }}"{% if link.target %} target="{{ link.target }}"{% endif %}>{{ sublink.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </li>
-    {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+    </div>
 </nav>

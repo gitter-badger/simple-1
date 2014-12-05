@@ -1,12 +1,44 @@
-<html>
+<!DOCTYPE html>
+<html class="no-js">
     <head>
-        <title>{{ store.display_name }}</title>
-        {{ content_for_header }}
+        <!-- Basics -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+        <!-- Page data -->
+        <title>{% if page.title %}{{ page.title }} - {% endif %}{{ store.display_name }}</title>
+        {% if page.meta_description %}
+            <meta name="description" content="{{ page.meta_description }}">
+        {% endif %}
+        
+        <!-- Standard viewport tag to set the viewport to the device's width -->
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=2.0,width=device-width">
+        
+        <!-- Open graph -->
+        {% include open-graph.liquid %}
+        
+        <!-- Fonts -->
+        <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        
+        <!-- Base bundle and head scripts (Modernizr) -->
+        {% comment %}
+            Theme dependent JS is loaded at the very bottom of this file for performance reasons.
+            However, Modernizr is included here for feature detection.
+        {% endcomment %}
+        {{ selz_head }}
+        
+        <!-- Favicon -->
+        {% if store.icon %}
+            <link rel="icon" href="{{ store.icon }}">
+        {% else %}
+            <link rel="icon" href="//d33i624pw6jj68.cloudfront.net/themes/simple/static/images/favicon.ico">
+        {% endif %}
     </head>
     <body>
-        <h1>helo</h1>
+        {% include skip-link.liquid %}
         {% include nav-bar.liquid %}
         {% block contents %}{% endblock %}
-        {{ content_for_footer }}
+        {% include footer.liquid %}
+        {{ selz_footer }}
     </body>
 </html>

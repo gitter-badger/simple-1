@@ -1,112 +1,136 @@
-[{ 
-    "Name": "Example_Text", 
-    "Label": "Text", 
-    "LabelHelp": "Example label help", 
-    "Type": "text", 
-    "Value": "Hello world",
-    "Placeholder": "Placeholder me up",
-    "InputHelp": "Example input help"
-}, 
-{ 
-    "Name": "Example_Select", 
-    "Label": "Steves Select", 
-    "LabelHelp": "Example label help", 
-    "Type": "select", 
-    "Options": [{
-                    "Label": "Option 1",
-                    "Value": 1,
-                    "Selected": true
-                },
-                {
-                    "Label": "Option 2",
-                    "Value": 2
-                },
-                {
-                    "Label": "Option 3",
-                    "Value": 3
-                }],
-    "InputHelp": "Example input help"
+{ "settings": [{ 
+	"name": "color_primary", 
+	"label": "Primary color", 
+	"type": "color", 
+	"value": "#1ABC9C",
+	"placeholder": "#......",
+	"help": {
+	    "input": "Used as the store's main brand color."
+	}
 },
 { 
-    "Name": "Example_Select", 
-    "Label": "Select", 
-    "LabelHelp": "Example label help", 
-    "Type": "select", 
-    "Options": [{
-                    "Label": "Option 1",
-                    "Value": 1
-                },
-                {
-                    "Label": "Option 2",
-                    "Value": 2,
-                    "Selected": true
-                },
-                {
-                    "Label": "Option 3",
-                    "Value": 3
-                }],
-    "InputHelp": "Example input help"
+	"name": "color_secondary", 
+	"label": "Secondary color", 
+	"type": "color", 
+	"value": "#2C3E50",
+	"placeholder": "#......",
+	"help": {
+	    "input": "Used for headings and emphasis."
+	}
 },
 { 
-    "Name": "Example_Color", 
-    "Label": "Color", 
-    "LabelHelp": "Example label help", 
-    "Type": "color", 
-    "Value": "#D55E5E",
-    "Placeholder": "#D55E5E",
-    "InputHelp": "Example input help"
+	"name": "color_text", 
+	"label": "Text color", 
+	"type": "color", 
+	"value": "#7F8C8D",
+	"placeholder": "#......",
+	"help": {
+		"input": "We suggest a dark color to retain legibility."
+	}
 },
 { 
-    "Name": "Example_Upload", 
-    "Label": "Upload", 
-    "LabelHelp": "Example label help", 
-    "Type": "upload", 
-    "ButtonText": "Choose file",
-    "InputHelp": "Example input help"
+	"name": "color_off_canvas_nav", 
+	"label": "Menu color", 
+	"type": "color", 
+	"value": "#2C3E50",
+	"placeholder": "#......",
+	"help": {
+		"label": "The background color for the pop out menu.",
+		"input": "We suggest a dark color."
+	}
 },
 { 
-    "Name": "Example_Radios", 
-    "Label": "Radios", 
-    "LabelHelp": "Example label help", 
-    "Type": "radio", 
-    "Options": [{
-                    "Label": "Option 1",
-                    "Id": "Example_Radios_Option_1",
-                    "Value": 1
-                },
-                {
-                    "Label": "Option 2",
-                    "Id": "Example_Radios_Option_2",
-                    "Value": 2,
-                    "Checked": true
-                },
-                {
-                    "Label": "Option 3",
-                    "Id": "Example_Radios_Option_3",
-                    "Value": 3
-                }],
-    "InputHelp": "Example input help"
+	"name": "logo_display", 
+	"label": "Display logo", 
+	"type": "radio", 
+	"value": "text",
+	"options": [{
+					"label": "Store name",
+					"id": "logo_display_text",
+					"value": "text"
+				},
+				{
+					"label": "Store logo",
+					"id": "logo_display_image",
+					"value": "image"
+				}],
+	"help": {
+		"input": "You can manage your store name and logo in store settings."
+	}
 },
 { 
-    "Name": "Example_Checkboxes", 
-    "Label": "Checkboxes", 
-    "LabelHelp": "Example label help", 
-    "Type": "checkbox", 
-    "Options": [{
-                    "Label": "Option 1",
-                    "Id": "Example_Checkboxes_Option_1",
-                    "Value": 1
-                },
-                {
-                    "Label": "Option 2",
-                    "Id": "Example_Checkboxes_Option_2",
-                    "Value": 2,
-                    "Checked": true
-                },
-                {
-                    "Label": "Option 3",
-                    "Id": "Example_Checkboxes_Option_3",
-                    "Value": 3
-                }],
-    "InputHelp": "Example input help"
+	"name": "index_page_size", 
+	"label": "Featured items", 
+	"type": "select", 
+	"value": 4,
+	"options": [{
+					"label": "4 items",
+					"value": 4
+				},
+				{
+					"label": "8 items",
+					"value": 8
+				},
+				{
+					"label": "12 items",
+					"value": 12
+				}],
+	"help": {
+		"label": "How many featured items to display on your store home page."
+	}
+},
+{ 
+	"name": "default_page_size", 
+	"label": "Items per page", 
+	"type": "select",
+	"value": 12,
+	"options": [{
+					"label": "4 items",
+					"value": 4
+				},
+				{
+					"label": "8 items",
+					"value": 8
+				},
+				{
+					"label": "12 items",
+					"value": 12
+				},
+				{
+					"label": "16 items",
+					"value": 16
+				},
+				{
+					"label": "20 items",
+					"value": 20
+				}],
+	"help": {
+		"label": "How many items to display per page by default."
+	}
+},
+{ 
+	"name": "payment_action_aside", 
+	"label": "Payment security", 
+	"type": "select", 
+	"value": "text",
+	"options": [{
+					"label": "Text (100% SSL Secure)",
+					"value": "text"
+				},
+				{
+					"label": "Logos (Visa, MasterCard, etc)",
+					"value": "logos"
+				},
+				{
+					"label": "Both logos and text",
+					"value": "both"
+				},
+				{
+					"label": "None",
+					"value": "none"
+				}],
+	"help": {
+	    "label": "Display logos or text about security under payment buttons."
+	}
 }]
+}

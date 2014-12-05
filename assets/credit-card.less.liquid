@@ -1,0 +1,103 @@
+// ==========================================================================
+// Credit Card form
+// ==========================================================================
+
+.credit-card {
+    position: relative;
+    padding: 60px 15px 5px;
+    margin: 0 auto @grid-section-padding / 2;
+    max-width: 360px;
+    background: @off-white;
+    border: 2px solid @gray-lightest;
+    
+    border-radius: 8px;
+
+    legend {
+        position: absolute;
+        top: 0;
+        left: 15px;
+    }
+    .h6 {
+        display: inline-block;
+        margin: 18px 0 0;
+        padding: 2px 6px;
+        background: @gray;
+        color: #fff;
+        border-radius: 10px;
+        text-shadow: 0 1px 0 rgba(0,0,0, .1);
+    }
+    // Hide labels
+    &-expiry .controls label {
+        .sr-only();
+    }
+
+    .payment-logos {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+
+        span {
+            margin-left: 5px;
+        }
+        [class^='logo-'] {
+            transition: opacity .5s .3s ease, width .3s 0 ease, transform .5s .3s ease, margin .3s 0 ease;
+        }
+    }
+    &.type-is-mastercard .logo-visa,
+    &.type-is-mastercard .logo-amex,
+    &.type-is-visa .logo-mastercard,
+    &.type-is-visa .logo-amex,
+    &.type-is-amex .logo-visa,
+    &.type-is-amex .logo-mastercard {
+        opacity: 0;
+        width: 0;
+        margin: 0;
+        transform: scale(0);
+        transition: opacity .5s ease, width .2s .5s ease, transform .5s ease;
+    }
+    &-cvv-amex, 
+    &.type-is-amex &-cvv-standard {
+        display: none;
+    }
+    &.type-is-amex &-cvv-amex {
+        display: inline;
+    }
+    .control-group {
+        padding: 0 0 10px;
+        background: none;
+        border: none;
+    }
+    &-expiry {
+        white-space: nowrap;
+    
+        select {
+            display: inline-block;
+        }
+    }
+
+    // Larger screens
+    @media only screen 
+    and (min-width : @screen-xs) {
+        // Layout
+        &-number,
+        &-expiry,
+        &-name,
+        &-ccv {
+            float: left;
+        }
+        &-number {
+            width: 58%;
+        }
+        &-expiry {
+            margin-left: 2%;
+            width: 40%;
+        }
+        &-name {
+            width: 75%;
+        }
+        &-ccv {
+            margin-left: 2%;
+            width: 23%;
+        }
+    }
+}

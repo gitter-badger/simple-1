@@ -1,0 +1,12 @@
+{% extends theme.liquid %}
+{% block contents %}
+    <main class="container" id="main" role="main">
+        {% if error_message %}
+            <h1>Error</h1>
+            <p>{{ error_message }}</p>
+        {% else %}
+            <h1>Page not found</h1>
+            <p>Sorry we couldn't find that. Try going back.</p>
+        {% endif %}
+    </main>
+{% endblock %}

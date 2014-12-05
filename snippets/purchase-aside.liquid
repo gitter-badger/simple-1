@@ -1,0 +1,16 @@
+{% if settings.payment_action_aside != "none" %}
+    {% if settings.payment_action_aside == "text" or settings.payment_action_aside == "both" %}
+        <small class="action-aside"><span class="icon-lock" aria-hidden="true"></span> 100% SSL Secure</small>
+    {% endif %}
+    
+    {% if settings.payment_action_aside == "logos" or settings.payment_action_aside == "both" %}
+        <small class="action-aside action-aside-logos">
+            <span class="logo-visa">Visa</span>
+            <span class="logo-mastercard">MasterCard</span>
+            <span class="logo-amex">American Express</span>
+            {% if store.apps.paypal %} 
+                <span class="logo-paypal">PayPal</span>
+            {% endif %}
+        </small>
+    {% endif %}
+{% endif %}

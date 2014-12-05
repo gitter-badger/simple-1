@@ -1,0 +1,382 @@
+// ==========================================================================
+// Buttons
+// ==========================================================================
+
+// Mixin for button styles
+.btn-styles(@background-color) {
+    border-color: @background-color;
+	background-color: @background-color;
+    
+    &:hover,
+	&:focus {
+		border-color: darken(@background-color, 10%);
+		background-color: darken(@background-color, 2%);
+	}
+	&.btn-empty {
+	    color: @background-color;
+	    
+	    &:hover,
+	    &:focus {
+	        background-color: @background-color;
+	        text-shadow: 0 1px 1px rgba(0,0,0, .1);
+	    }
+	}
+}
+.btn {  
+	// Layout
+    position: relative;
+	display: inline-block;
+	padding: @padding-base-vertical @padding-base-horizontal @padding-base-vertical - 2;
+	cursor: pointer;
+	vertical-align: middle;
+
+    // Type
+    .font-size(@font-size-base);
+    line-height: @line-height-base;
+    color: #fff;
+	text-align: center;
+	font-weight: @btn-font-weight;
+	.font-smoothing(on);
+	user-select: none;
+	text-transform: uppercase;
+	text-shadow: 0 1px 1px rgba(0,0,0, .1);
+	
+	// Mixins
+	transition: background .3s ease, border .3s ease;
+	border-radius: @btn-radius;
+			
+	// Default
+	border: 2px solid;
+
+	// Default button style
+	.btn-styles(@btn-default-bg);
+
+	// Variants
+	// --------------------------------------------------
+	&-primary {
+		.btn-styles(@btn-primary-bg);
+	}
+	&-kindle {
+		.btn-styles(@color-kindle);
+	}
+	&-paypal {
+		.btn-styles(@color-paypal);
+	}
+	&-facebook {
+		.btn-styles(@color-facebook);
+		
+		&::before { content: "\e60d"; }
+	}
+	&-twitter {
+		.btn-styles(@color-twitter);
+		
+		&::before { content: "\e60c"; }
+	}
+	&-pinterest {
+		.btn-styles(@color-pinterest);
+		
+		&::before { content: "\e618"; }
+	}
+	&-google-plus {
+		.btn-styles(@color-google-plus);
+		
+		&::before { content: "\e60e"; }
+	}
+	&-dropbox {
+		.btn-styles(@color-dropbox);
+		
+		&::before { content: "\e60f"; }
+	}
+	&-download::before { content: "\e610"; }
+	&-play::before { content: "\e607"; }
+
+	&-download::before,
+	&-play::before,
+	&-facebook::before,
+	&-twitter::before,
+	&-pinterest::before,
+	&-google-plus::before,
+	&-dropbox::before {
+	    font-family: "Icons";
+		vertical-align: top;
+		margin-right: 5px;
+	}
+	
+	// Styling
+	// --------------------------------------------------
+	&-rounded {
+	    border-radius: 100px;
+	    padding-left: @padding-base-horizontal + 5;
+	    padding-right: @padding-base-horizontal + 5;
+	}
+	&-small {
+	    padding: @padding-small-vertical @padding-small-horizontal @padding-small-vertical - 1;
+	    .font-size(@font-size-small);
+	}
+	&-empty {
+	    background-color: transparent;
+	    text-shadow: none;
+	}
+	
+	// States
+	// --------------------------------------------------
+	&:hover,
+	&:focus {
+	    color: #fff;
+	}
+	&:focus  {
+		outline: none;
+	}
+	&:active {
+		top: 1px;
+	}
+	// Disabled
+	&[disabled] {
+		pointer-events: none;
+		opacity: .5;
+	}
+	
+	// Loading
+	&.loading {
+	    cursor: default;
+	    pointer-events: none;
+	    
+	    [class^="logo-"],
+        [class*=" logo-"] {
+	        opacity: 0;
+	    }
+	}
+	
+	// Child elements
+	// --------------------------------------------------
+	.logo-paypal {
+	    background-image: @logo-paypal-white;
+	}
+	.spinner {
+	    position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -11px 0 0 -11px;
+        border-color: rgba(255, 255, 255, .2);
+        border-left-color: #fff;
+	}
+	// Logos
+	[class^="logo-"] {
+        margin-left: 5px;   
+    }
+}
+
+// Button count
+// ---------------------------------------------
+.btn-addon {
+	white-space: nowrap;
+	display: inline-block;
+	vertical-align: middle;
+	
+	> * {
+	    white-space: normal;
+	}
+	.btn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        padding-right: @padding-base-horizontal + 6;
+        
+        &-small {
+            padding-right: @padding-small-horizontal + 6;
+        }
+    }
+}
+.btn-count {
+    position: relative;
+	.arrow(left, @gray-lightest, 6px);
+	display: inline-block;
+	vertical-align: middle;
+	padding: @padding-base-vertical ceil(@padding-base-horizontal * 1.2) @padding-base-vertical + 2;
+	
+	background: @gray-lightest;
+	border-radius: 0 @btn-radius @btn-radius 0;
+
+	font-weight: 600;
+}
+.btn-small + .btn-count {
+	padding: @padding-small-vertical + 2 ceil(@padding-small-horizontal * 1.2) @padding-small-vertical + 1;
+	.font-size(@font-size-small);
+}
+
+// Unstyled button elements
+// --------------------------------------------------
+.btn-faux-link {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    border: 0;
+    background: transparent;
+    vertical-align: baseline;
+    text-align: left;
+    font: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    -moz-user-select: text;
+    .font-smoothing(on);
+}
+
+// Focus styles
+// --------------------------------------------------
+button:focus, 
+.btn:focus {
+    .tab-focus();
+}
+
+// Actions
+// --------------------------------------------------
+.actions,
+.panel-footer {
+    font-size: 0;
+    
+    .btn {
+        display: block;
+        width: 100%;
+        margin: @grid-section-padding / 2 0 0;
+        .font-size(@font-size-base);
+        
+        &-small {
+            .font-size(@font-size-small);
+        }
+        &:first-child {
+            margin: 0;
+        }
+    }
+    @media (max-width : @screen-xs) {
+        .pull-left,
+        .pull-right {
+            float: none;
+        }
+    }
+    @media (min-width : @screen-xs) {
+        .btn {
+            display: inline-block; 
+            width: auto;
+            margin: 0;
+        }
+        .btn + .btn {
+            margin: 0 0 0 @grid-section-padding;
+            
+            &.pull-left,
+            &.pull-right {
+                margin: 0;   
+            }
+        }
+    }
+}
+.panel-footer {
+    .clearfix();
+    padding-top: @grid-section-padding;
+    padding-bottom: @grid-section-padding;
+    
+    .btn {
+        text-align: center;
+    }
+    .action-aside {
+        margin-top: @grid-section-padding / 2;
+    }
+    
+    @media (min-width : @screen-xs) {
+        .pull-left, 
+        .pull-left .action-aside {
+            text-align: left;
+        }
+        .pull-right, 
+        .pull-right .action-aside  {
+            text-align: right;
+        }
+    }
+}
+.action-aside {
+    display: block;
+    text-align: center;
+    
+    .logo-norton {
+        position: relative;
+        top: -2px;
+        margin-left: 5px;
+    }
+    &-logos {
+        [class^="logo-"],
+        [class*=" logo-"] {
+            margin: @grid-section-padding / 2 @grid-section-padding / 4;
+        }
+    }
+}
+.share-actions {
+    margin-top: @grid-section-padding;
+    text-align: center;
+    
+    > span {
+        display: inline-block;
+        vertical-align: middle;
+        margin: @grid-section-padding / 2 @grid-section-padding / 4 0 @grid-section-padding / 4;
+    }
+}
+
+// Block options
+// ---------------------------------------------
+.block-options {
+	text-align: center;
+	font-size: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	.option {
+		display: inline-block;
+		vertical-align: top;
+		.font-size(@font-size-base);
+
+		&:hover .label {
+			border-color: @gray-light;
+		}
+		&.checked .label {
+		    background-color: @off-white;
+			border-color: @brand-primary;
+
+			&::before {
+				opacity: 1;
+				transition-delay: .1s;
+			}
+		}
+		&:first-child label {
+			margin-left: 0;
+		}
+	}
+	input[type="checkbox"],
+	input[type="radio"] {
+		display: none;
+	}
+	[class^="logo-"],
+    [class*=" logo-"] { 
+        margin: 5px 2px;
+    }
+	.label {
+		// Layout
+		position: relative;
+		display: block;
+		margin: @grid-section-padding / 4;
+		padding: @grid-section-padding / 2;
+		
+		// Appearance
+		background: #fff;
+		border: 2px solid @gray-lighter;
+		border-radius: @btn-radius;
+
+		// Text
+		text-align: center;
+
+		// Animation
+		transition: border .3s ease;
+		
+		.option-label {
+			display: block;
+			margin-bottom: 5px;
+		}
+	}
+}

@@ -1,0 +1,55 @@
+{% extends theme.liquid %}
+{% block contents %}
+    {% if item.featured_media and item.featured_media.type != "audio" %}
+        <main id="main" class="item-full-media" role="main">
+            <div class="item-media">
+                <div class="container">
+                    {% include media.liquid %}
+                </div>
+            </div>
+            <div class="container item-info">
+                <h1>{{ item.title }}</h1>
+                {% if item.description != empty %}
+                    <div class="item-description">{{ item.description }}</div>
+                {% endif %}
+                {% if item.files_description != empty %}
+                    <p>You'll get {{ item.files_description }}</p>
+                {% endif %}
+                {{ purchase_form }}
+                {% include purchase-aside.liquid %}
+            </div>
+        </main>
+    {% else %}
+        <main id="main" class="container item-standard">
+            <div class="row">
+                <div class="span8 item-media">
+                    {% include media.liquid %}  
+                </div>
+                <div class="span4 item-info">
+                    <h1>{{ item.title }}</h1>
+                    {% if item.files_description != empty %}
+                        <p>You'll get {{ item.files_description }}</p>
+                    {% endif %}
+                    {{ purchase_form }}
+                    {% include purchase-aside.liquid %}
+                </div>
+            </div>
+            {% if item.description %}
+                <div class="item-description">{{ item.description }}</div>
+            {% endif %}
+        </main>
+    {% endif %}
+    <aside class="container">
+        {{ app_disqus }}
+        {{ app_yotpo }}
+    
+        {% if store.sharing_enabled %}
+            {% assign shareUrl = item.short_url %}
+            {% assign shareTitle = item.title %}
+            {% assign twitterUser = store.social_links.twitter_username %}
+            {% assign shareImage = item.featured_image.url_large %}
+            {% assign shareText = item.title %}
+            {% include share.liquid %}
+        {% endif %}
+    </aside>
+{% endblock %}

@@ -1,0 +1,87 @@
+// ==========================================================================
+// Tooltips & popovers
+// ==========================================================================
+
+// Tooltip
+.tooltip {
+	position: relative;
+    cursor: help;
+	
+	.tip {
+	    // Arrow
+        .arrow(top, @tooltip-bg, 7px);
+
+        // Positioning
+		display: none;
+		position: absolute;
+		z-index: @tooltip-zindex;
+        top: 100%;
+		left: 50%;
+		margin-top: 10px; 
+		padding: 7px 12px;
+        transform: translateX(-50%);
+        animation: fade-in .2s;
+		
+        // Background
+		background: @tooltip-bg;
+
+        // Type
+        color: @tooltip-text-color;
+		line-height: @line-height-base;
+		text-align: center;
+		.font-size(@font-size-small);
+		font-weight: 600;
+		pointer-events: none; // Let mouse events pass through
+        .font-smoothing(on);
+        white-space: nowrap;
+        text-transform: none;
+
+        // Mixins
+		border-radius: 4px;
+		box-shadow: 0 1px 1px rgba(0,0,0, .2);
+		
+		// Variations
+		&-left {
+			left: -12px;
+			transform: translateX(0);
+
+			&::after {
+				left: 17px;	
+			}
+		}
+		&-right {
+			right: -12px;
+			left: auto;
+            transform: translateX(0);
+			
+			&::after {
+				right: 12px;
+				left: auto;
+			}
+		}
+		&-above {
+		    // Psuedo bits
+            .arrow(bottom, @tooltip-bg, 7px);
+            
+            // Reset position
+            position: absolute;
+			top: auto;
+            bottom: 100%;
+            margin-top: 0;
+            margin-bottom: 10px;
+            
+            // Reset default tip's arrow
+            &::after {
+				top: auto;
+			}
+		}
+	}
+	&:hover .tip,
+	&:focus .tip {	
+		display: block;
+	}
+}
+button.tooltip,
+a.tooltip {
+    cursor: pointer;
+}

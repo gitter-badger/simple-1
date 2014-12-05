@@ -1,0 +1,36 @@
+// ==========================================================================
+// Footer
+// ==========================================================================
+
+.footer {
+    text-align: center;   
+    padding-top: @grid-section-padding;
+    padding-bottom: @grid-section-padding;
+    
+    @media (min-width : @screen-xs) {
+        padding-top: @grid-section-padding * 2;
+    }
+}
+
+.social-links {
+    display: block;
+    vertical-align: middle;
+    margin: @grid-section-padding 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+    
+    li {
+        display: inline-block;
+        margin: 0 @grid-section-padding / 4;
+        .font-size(@font-size-large);
+        line-height: 1;
+    }
+    a {
+        color: @headings-small-color;
+          
+        &::before {
+            margin: 0;
+        }
+    }
+}

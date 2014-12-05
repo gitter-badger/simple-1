@@ -1,0 +1,34 @@
+{    
+    "version": "1.0.0",
+    "author": "",
+    "links": [
+        { 
+            name: "main-menu", 
+            paths: ["/", "/categories", "/pages/about", "/pages/contact" ] 
+        },
+        { 
+            name: "footer-menu", 
+            paths: ["/", "/categories", "/pages/about", "/pages/contact"] 
+        }
+    ],
+    "pages": [
+        { 
+            name: "About", 
+            title: "About us", 
+            slug: "about", 
+            template: "content.liquid"
+        },
+        { 
+            name: "Faq", 
+            title: "FAQ", 
+            slug: "faq", 
+            template: "content.liquid"
+        },
+        { 
+            name: "Contact", 
+            title: "Contact us", 
+            slug: "contact", 
+            template: "contact.liquid"
+        }
+    ]
+}

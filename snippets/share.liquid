@@ -1,0 +1,14 @@
+<div class="share-actions" data-share-url="{{ shareUrl }}" data-share-text="{{ shareTitle }}" data-twitter-id="{{ twitterUser }}" data-share-image="{{ shareImage }}">
+	<span class="btn-addon" data-share-network="facebook">
+		<a href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}" target="_blank" class="btn btn-small btn-facebook">Share</a>
+	</span>
+	<span class="btn-addon" data-share-network="twitter">
+		<a href="https://twitter.com/intent/tweet?text={{ shareText }}&url={{ shareUrl }}&via={{ twitterUser }}" target="_blank" class="btn btn-small btn-twitter">Tweet</a>
+	</span>
+	<span class="btn-addon" data-share-network="pinterest">
+		<a href="http://pinterest.com/pin/create/button/?url={{ shareUrl }}&media{{ shareImage }}&description={{ shareText }}" target="_blank" class="btn btn-small btn-pinterest">Pin it</a>
+	</span>
+	<span data-share-network="googlePlus">
+		<a href="https://plus.google.com/share?url={{ shareUrl }}" target="_blank" class="btn btn-small btn-google-plus">+1</a>
+	</span>
+</div>

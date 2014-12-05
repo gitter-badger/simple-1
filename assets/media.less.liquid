@@ -2,6 +2,380 @@
 // Media
 // ==========================================================================
 
+figure {
+    margin: 0 0 @grid-section-padding;
+    
+    img {
+        display: block;
+    }
+}
 img {
     max-width: 100%;
+    height: auto;
+}
+.media img {
+    width: 100%;
+    height: auto;
+}
+
+// --------------------------------------------------
+// Video & Audio Player
+// --------------------------------------------------
+.js audio,
+.js video,
+.js .media img,
+.video-embed {
+    opacity: 0;
+    transition: opacity .2s ease;
+
+    &.in {
+        opacity: 1;
+    }
+}
+
+// Container styles
+// --------------------------------------------
+.mejs-container {
+	position: relative;
+	text-align: left;
+}
+
+// Media specific styles
+.mejs-video,
+.video-embed {
+    position: relative;
+    padding-bottom: 56.25%; // Assume: 16:9
+    height: 0 !important; // Inline styles
+    width: 100% !important; // Inline styles
+    background: #000;
+    
+    > iframe,
+    > object,
+    > embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+    }
+}
+.mejs-audio {
+    background: none;
+    height: 45px !important;
+}
+
+// Button styles
+// --------------------------------------------
+.mejs-overlay-button::before,
+.mejs-controls .mejs-button button::before {    
+    font-family: 'Icons';
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    .font-size(20);
+    .font-smoothing(on);
+}
+
+// Plugins
+// --------------------------------------------
+.me-plugin {
+	position: absolute;
+    height: auto;
+    width: auto;
+}
+
+// Fullscreen
+// --------------------------------------------
+.mejs-fullscreen {
+	/* set it to not show scroll bars so 100% will work */
+	overflow: hidden !important;
+}
+.mejs-container-fullscreen {
+	position: fixed;
+    transform: translateZ(0);
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	z-index: 1000;
+
+    // Cancel responsive styles
+    height: 100% !important;
+    padding-bottom: 0 !important;
+}
+.mejs-container-fullscreen .mejs-mediaelement,
+.mejs-container-fullscreen video {
+	width: 100%;
+	height: 100%;
+}
+
+// Layers within the player
+.mejs-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.mejs-clear {
+	clear: both;
+}
+.mejs-mediaelement {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+.mejs-layer {
+    position: absolute;
+	top: 0;
+	left: 0;
+    width: 100% !important;
+	height: 100% !important;
+}
+.mejs-poster {
+	background-size: contain;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+:root .mejs-poster img {
+	display: none ;
+}
+.mejs-poster img {
+	border: 0;
+	padding: 0;
+	border: 0;
+}
+.mejs-overlay-play {
+	cursor: pointer;
+	z-index: 10;
+}
+.media-pause .mejs-overlay-play {
+	background: rgba(0,0,0, .1);
+}
+.mejs-overlay-play .mejs-overlay-button {
+	position: absolute;
+	z-index: 9;
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+    line-height: 54px;
+	margin: -30px 0 0 -30px !important;
+    text-align: center;
+    background: rgba(red(@gray-dark), green(@gray-dark), blue(@gray-dark), .8);
+    border: 4px solid #fff;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 5px rgba(0,0,0, .25), inset 0 1px 1px rgba(0,0,0,.25);
+    text-shadow: 0 1px 1px rgba(0,0,0, .25);
+    
+    &::before {
+        content:"\e607";
+        .font-size(40);
+    }
+}
+
+// Loader (for when moving position etc)
+.mejs-overlay-loading {
+    display: none !important;
+    /*span { }*/
+}
+
+// Controls bar
+// --------------------------------------------
+.mejs-controls {
+	position: absolute;
+	z-index: 10;
+	margin: 0;
+	padding: 0;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	height: 45px;
+	width: 100%;
+    //visibility: visible !important; //Testing
+
+    // Each control container
+    div {
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 48px;
+        height: 45px;
+    }
+    
+    // Base button style
+    .mejs-button button {
+        position: absolute;
+    	cursor: pointer;
+    	display: block;
+        margin: 0;
+    	padding: 0;
+    	
+    	height: 45px;
+    	width: 48px;
+    	border: 0;
+        background: none;
+        overflow: visible;
+        text-decoration: none;
+        
+        transition: color .3s ease;
+        
+        &:hover,
+        &:focus {
+            color: @brand-primary;
+        }
+        &:focus {
+	        outline: none;
+        }
+    }
+    
+    // Play, Pause, Stop
+    .mejs-play button::before {
+        content: "\e607";
+        .font-size(24);
+    }
+    .mejs-pause button::before {
+    	 content: "\e608";
+    }
+    .mejs-stop button::before {
+    	content: "\e609";
+    }
+
+    // Fullscreen control
+    .mejs-fullscreen-button {
+        right: 0;
+    }
+    .mejs-fullscreen-button button::before {
+        content: "\e60a";
+    }
+    .mejs-unfullscreen button::before {
+        content: "\e60b";
+    }
+    
+    // Mute & Volume controls
+    .mejs-volume-button {
+        right: 50px;
+    }
+    .mejs-mute button::before {
+        content: "\e600";
+        .font-size(16);
+    }
+    .mejs-unmute button::before {
+        content: "\e601";
+        .font-size(16);
+    }
+    
+    // Progress bars
+    // --------------------------------------------
+    .mejs-horizontal-volume-slider div, 
+    .mejs-time-rail span {
+        display: block;
+        position: absolute;
+        height: 7px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    // Time
+    // Total time container
+    .mejs-time-total {
+        background-color: @gray-lighter;
+    }
+    .mejs-horizontal-volume-total {
+        background-color: @gray-lightest;
+    }
+    .mejs-time-total {
+        margin: 19px 10px 0;
+    }
+
+    // When buffering/loading
+    .mejs-time-buffering {
+        width: 100%;
+        //#gradient.striped(@gray-lightest);
+        // animation: progress-bar-stripes 2s linear infinite;
+        background-size: 20px 20px;
+    } 
+    // Already loaded data
+    .mejs-time-loaded {
+        background-color: @gray-lightest;
+        min-width: 10px;
+    }
+    // Current time
+    .mejs-time-current,
+    .mejs-horizontal-volume-current {
+        background-color: @brand-primary;
+        width: 0;
+        border-radius: 20px 0 0 20px;
+    }
+    
+    // Time float popup
+    .mejs-time-rail .mejs-time-float {
+        display: none;
+        bottom: 20px;
+        height: auto;
+    }
+    .mejs-time-rail .mejs-time-float-current {
+        height: auto;
+        padding: 1px 5px 2px;
+        margin-left: -24px;
+        .arrow(bottom, @black, 6px);
+
+        background: @black;
+        border-radius: 4px;
+        animation: pop-upwards .2s;
+        
+        .font-size(@font-size-small);
+        color: #fff;
+        font-weight: 600;
+    }
+
+    // Drag handle
+    .mejs-time-rail .mejs-time-handle,
+    .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+        margin: 0 0 0 -4px;
+        background: darken(@brand-primary, 10%);
+        width: 13px;
+        height: 13px;
+        left: 0;
+        right: auto;
+        top: -3px;
+        transition: background-color .25s;
+        border-radius: 50%;
+    }
+    .mejs-time-rail .mejs-time-handle {
+        left: -5px;
+    }
+    .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+        top: 16px;
+    }
+    
+    // Horizontal volumn control
+    .mejs-horizontal-volume-slider {
+        width: 80px;
+        position: relative;
+    }
+    .mejs-horizontal-volume-slider div {
+        top: 19px;
+        left: 0;
+    }
+    .mejs-horizontal-volume-total {
+        width: 70px;
+    }
+}
+
+// Error handling
+// --------------------------------------------
+.me-cannotplay {
+    a {
+    	color: #fff;
+    	font-weight: 600;
+    }
+    span {
+    	padding: 15px;
+    	display: block;
+    }
 }

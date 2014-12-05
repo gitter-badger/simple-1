@@ -1,0 +1,24 @@
+{% if item.featured_media and item.featured_media.type != "audio" %}
+    <div class="media video">
+        {% if item.featured_media.type == "youtube" or item.featured_media.type == "vimeo" %}
+            <div class="video-embed">
+                {{ item.featured_media.embed }}
+            </div>
+        {% else %}
+            {{ item.featured_media.embed }}
+        {% endif %}
+    </div>
+{% else %} 
+    <div class="media">
+        {% if item.featured_image.url_large %} 
+            {{ item.featured_image.url_large | img_tag:item.title }}
+        {% else %}
+            {{ "https://d33i624pw6jj68.cloudfront.net/themes/simple/assets/images/default_item_image.svg" | img_tag:item.title }}
+        {% endif %}
+    </div>  
+    {% if item.featured_media and item.featured_media.type == "audio" %}
+        <div class="media audio">
+            {{ item.featured_media.embed }}
+        </div>
+    {% endif %}
+{% endif %}

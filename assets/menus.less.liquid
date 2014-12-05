@@ -1,0 +1,194 @@
+// ==========================================================================
+// Navigation styles
+// ==========================================================================
+body {
+    transition: transform .3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+    backface-visibility: hidden;
+}
+html.main-menu-active {
+    padding-top: 0 !important; // Override store manager styles
+    
+    body {
+        transform: translate3d(-@main-menu-width, 0, 0);
+        
+        .menu-main {
+            opacity: 1;
+            
+            &-wrap {
+                display: block;
+            }
+        }
+    }
+}
+// IE9 doesn't support 3d transforms
+// http://caniuse.com/#feat=transforms3d
+.no-csstransforms3d.main-menu-active body {
+    transform: translateX(-@main-menu-width);
+}
+
+.nav-bar {
+    padding: @grid-section-padding 0;
+    text-align: center;
+    
+    .store-name {
+        display: inline-block;
+        margin-bottom: @grid-section-padding * .75;
+        .font-size(@font-size-h3);
+        font-weight: 600;
+        line-height: 1.1;
+        
+        img {
+            display: block;
+        }
+    }
+    &-actions {
+        text-align: right;
+    }
+    .cart {
+        float: left;
+    }
+    .btn-toggle-main-menu {
+        vertical-align: top;
+        margin: 5px 0 5px @grid-section-padding;
+        .font-size(@font-size-small);
+        text-transform: uppercase;
+        font-weight: 600;
+        
+        &::before {
+            .font-size(20);
+            vertical-align: top;
+            line-height: .9;
+            margin-right: 5px;
+        }
+    }
+    &-no-cart {
+        .store-name {
+            float: left;
+            margin-top: 5px;
+            margin-bottom: 0;
+            text-align: left;
+            max-width: 66%;
+        }
+    }
+    
+    @media (min-width : @screen-xs) {
+        text-align: right;
+        
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        .store-name {
+            float: left; 
+            text-align: left; 
+            margin-bottom: 0;
+            
+            img {
+                max-width: 150px;
+                max-height: 50px;
+            }
+        }
+        &-actions {
+            margin-left: auto;
+            text-align: right;
+        }
+        .cart {
+            float: none;
+            display: inline-block;
+        }
+    }
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu {
+    .store-name {
+        font-weight: 600;
+    }
+    
+    // Main menu (off canvas)
+    &-main {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        background: @off-canvas-menu-bg;
+        opacity: 0;
+        transition: opacity .3s ease;
+        text-align: left;
+        
+        &-wrap {
+            display: none; // Important so it doesn't get focus
+            height: 100%;
+            width: @main-menu-width;
+            overflow-y: scroll;
+        }
+        
+        a,
+        .btn-close-main-menu {
+            // Reset hover color
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        a {
+            display: block;
+            padding: @padding-base-vertical @grid-section-padding;
+        }
+        .btn-close-main-menu {
+            margin-top: @grid-section-padding / 2;
+            padding: @grid-section-padding / 2 @grid-section-padding;
+            font-weight: 600;
+            .font-size(@font-size-h6);
+            text-transform: uppercase;
+            line-height: 1;
+            
+            &::before {
+                content:"\00d7";
+                margin-right: 5px;
+                vertical-align: middle;
+                .font-size(@font-size-h2);
+            }
+        }
+        .form-search {
+            padding: @grid-section-padding / 2 @grid-section-padding @grid-section-padding;
+            
+            input[type="search"] {
+                border: 0;
+            }
+        }
+        .active > a {
+            color: #fff;
+            .arrow(right, #fff);
+            
+            &::after {
+                left: 0;
+                right: auto;
+            }
+        }
+        
+        &-sub a {
+            padding-left: @grid-section-padding * 2;
+        }
+    }
+    
+    // Footer menu
+    &-footer {
+        display: inline-block;
+        
+        li {
+            display: inline-block;
+            padding: @grid-section-padding / 4 @grid-section-padding / 2;
+        }
+        a {
+            padding: 0 ;
+        }
+        .store-name a {
+            color: @headings-color;
+        }
+    }
+}
