@@ -1,4 +1,6 @@
 # Simple Selz Theme
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Selz/simple?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 The Simple theme is intended to be a base for other theme development. It includes the bare bones required for a theme to work on Selz. It provides all the templates and layouts you need to get started building your own theme. 
 
 ### Requirements
